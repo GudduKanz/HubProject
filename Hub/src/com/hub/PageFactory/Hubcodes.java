@@ -119,6 +119,7 @@ this.driver =idriver;
 	@FindBy(xpath="//a[@href='#allevents']") WebElement allevent;
 	//@FindBy(xpath="//*[contains(text(),'Conversations in Confidence Course Dec 2018.')]") WebElement 
 	@FindBy(xpath="//span[@class='YB_clear float-right mt-3 mr-0 YB_clear1']") WebElement regionrefresh;
+	@FindBy(xpath="//a[@class=' text_theme']") WebElement cl;
 	//////////////////////////////////////Edit Event/////////////////////////////
 	@FindBy(xpath="//a[text()='GameEvent!!!']") WebElement eventclick;
 	@FindBy(xpath="//button[@class='btn dropdown-toggle btn_dropdwn']") WebElement edit;
@@ -878,5 +879,8 @@ public void allevent(String titles) throws InterruptedException
 	Thread.sleep(2000);
 title.sendKeys(titles);	
 Thread.sleep(3000);
+cl.click();
+Thread.sleep(5000);
+
 }
 }
