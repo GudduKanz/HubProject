@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="com.hub.Log4jproperties.TestNGListerner"/>
+  </listeners>
+  <test name="Test(failed)">
+    <classes>
+      <class name="com.hub.TestNGscript.HubTest">
+        <methods>
+          <include name="Signin"/>
+          <include name="Signin2"/>
+          <include name="beforeMethod"/>
+          <include name="Eventtest3"/>
+        </methods>
+      </class> <!-- com.hub.TestNGscript.HubTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

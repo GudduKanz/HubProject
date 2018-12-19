@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="D:/JARs/java-json.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/selenium-chrome-driver-2.26.0.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/selenium-server-standalone-2.41.0.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/commons-collections4-4.1.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/curvesapi-1.04.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/gson-2.8.0.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/guava-21.0.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/mysql-connector.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/poi-examples-3.17.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/poi-excelant-3.17.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/poi-ooxml-3.17.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/poi-scratchpad-3.17.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/selenium-chrome-driver-2.26.0.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/JARS/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_191"/>
+	<classpathentry kind="lib" path="D:/GaneshBackup/Sikuli jars/sikuli-3.0.0.jar"/>
+	<classpathentry kind="lib" path="D:/GaneshBackup/Sikuli jars/sikuli-script.jar"/>
+	<classpathentry kind="lib" path="D:/GaneshBackup/Sikuli jars/sikulixapi-1.1.0.jar"/>
+	<classpathentry kind="lib" path="D:/GaneshBackup/Sikuli jars/sikulixlibslux-1.1.0.jar"/>
+	<classpathentry kind="lib" path="D:/GaneshBackup/Sikuli jars/sikulixlibswin-1.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/bridj-0.6.2.jar/bridj-0.6.2.jar"/>
+	<classpathentry kind="lib" path="D:/JARs/extentreports-2.05.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/cglib-nodep-3.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/commons-exec-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/gson-2.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/guava-21.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/httpclient-4.5.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/httpcore-4.4.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/jna-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/jna-platform-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/selenium-api-3.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/selenium-firefox-driver-3.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/selenium-remote-driver-3.4.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
