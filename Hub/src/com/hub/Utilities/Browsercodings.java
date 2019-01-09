@@ -18,24 +18,16 @@ public class Browsercodings{
 	
 	public static WebDriver driver;
 
-	public static  WebDriver Browserfact(String browserName,String url) 
+	public static  WebDriver Browserfact(String browserName,String url) throws InterruptedException 
 	{
 		
 		System.setProperty("webdriver.chrome.driver","F:\\chromedriver.exe");
-		//System.setProperty("restart.browser.each.scenario", "false");
-//System.setProperty("webdriver.gecko.driver", "C:\\Users\\Tradezap\\Downloads\\geckodriver.exe");
-        
+      driver=new ChromeDriver();
+	   driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	   driver.get(url);
+	  driver.manage().window().maximize();
 		
-        
-		
-	   driver=new ChromeDriver();
-		     Actions act = new Actions(driver);
-		     act.sendKeys(Keys.RETURN).sendKeys("javascript.enabled").perform();
-		     act.sendKeys(Keys.TAB).sendKeys(Keys.RETURN).perform();
 
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	        driver.get(url);
-	     	driver.manage().window().maximize();
-	        return driver;
+	     return driver;
 
 		}}

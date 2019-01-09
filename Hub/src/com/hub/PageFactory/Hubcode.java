@@ -30,11 +30,13 @@ import org.sikuli.script.FindFailed;
 import org.sikuli.script.ImagePath;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 
 
-
-public class Hubcodes {
-static Logger log = Logger.getLogger( Hubcodes.class.getName());
+public class Hubcode {
+static Logger log = Logger.getLogger( Hubcode.class.getName());
 	
 	{ 
 		PropertyConfigurator.configure("C:\\Users\\jaisumalatha\\eclipse-workspace\\Explore\\Log4j.properties");
@@ -43,7 +45,7 @@ static Logger log = Logger.getLogger( Hubcodes.class.getName());
 	//private WebDriver para;
 
 	@SuppressWarnings("static-access")
-	public  Hubcodes (WebDriver idriver)
+	public  Hubcode (WebDriver idriver)
 {
 
 this.driver =idriver;
@@ -78,7 +80,7 @@ this.driver =idriver;
 	///////////////////////////youthevent////////////////////////
 	@FindBy(name="search_name") WebElement nmm;
 	@FindBy(xpath="//a[@href='#allevents']") WebElement allevents;
-	@FindBy(xpath="//a[@href='http://demo2.tradezap.com/event']") WebElement yev;
+	@FindBy(xpath="//a[@href='http://demo1.youthhub.com/event']") WebElement yev;
 	@FindBy(xpath="//*[@id=\"YB_event_list_1\"]/div[1]/div/div[2]/div[1]/div[2]/a/p") WebElement Moredetails;
 	////////////////////////Explore///////////////////////////////
 	@FindBy(xpath="//*[@id=\"mySidenav\"]/div/div/a[5]") WebElement ex;
@@ -125,11 +127,19 @@ this.driver =idriver;
 	@FindBy(xpath="//button[@class='btn dropdown-toggle btn_dropdwn']") WebElement edit;
 	@FindBy(xpath="//a[text()=' Edit']") WebElement editoptionclick;
 	@FindBy(xpath="//button[text()='Update']") WebElement updateeditedevent;
+	//////////////////////////youth-event operations////////////////////////////////
+	@FindBy(xpath="//button[contains(text(),'Count Me In')]") WebElement countin;
+	@FindBy(xpath="//a[text()='Photo']") WebElement photo;
+	@FindBy(xpath="//a[text()='Video']") WebElement video;
+	@FindBy(xpath="//a[text()='Discussion ']") WebElement discussion;
+	@FindBy(xpath="//input[contains(@class,'msg_box small_font w-75 YB_msg_send')]") WebElement sendmessage;
+	@FindBy(xpath="//i[@class='fas fa-angle-right float-right send_msg YB_send_msg cursor']") WebElement sendbutton;
+	
 
 	
 	
 	
-	
+	///////Login from HomePage////////
 	public void login(String user,String pass) {
 		id.sendKeys(user);
 		pss.sendKeys(pass);
@@ -138,6 +148,7 @@ this.driver =idriver;
 		//addev.click();
 	
 	}
+	////////////Login////////////
 	public void login2(String user,String pass) {
 		id.sendKeys(user);
 		pss.sendKeys(pass);
@@ -147,6 +158,7 @@ this.driver =idriver;
 		//addev.click();
 	
 	}
+	//////////Add Event////////////////////
 	public void Events(String title,String description) throws IOException, InterruptedException {
 		ev.click();
 		addev.click();
@@ -159,19 +171,68 @@ this.driver =idriver;
 		Runtime.getRuntime().exec("D:\\h1.exe");
 		Thread.sleep(3000);
 	}
-	
+	///////////////////Add Event for Shadowtech//////////////
+	public void ShadowEvents(String title,String description) throws IOException, InterruptedException, AWTException {
+		ev.click();
+		addev.click();
+		Robot robot = new Robot();
+		// press key Ctrl+Shift+r
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.delay(100);
+		robot.keyPress(KeyEvent.VK_SHIFT);
+		robot.delay(100);
+		robot.keyPress(KeyEvent.VK_R);
+		// relase key Ctrl+Shift+r
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_R);
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_SHIFT);
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.delay(100);
+		robot.keyPress(KeyEvent.VK_SHIFT);
+		robot.delay(100);
+		robot.keyPress(KeyEvent.VK_R);
+		// relase key Ctrl+Shift+r
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_R);
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_SHIFT);
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.delay(100);
+		robot.keyPress(KeyEvent.VK_SHIFT);
+		robot.delay(100);
+		robot.keyPress(KeyEvent.VK_R);
+		// relase key Ctrl+Shift+r
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_R);
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_SHIFT);
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(10000);
+        ttl.sendKeys(title);//
+		des.sendKeys(description);
+		logo.click();
+		Runtime.getRuntime().exec("D:\\h1.exe");
+		Thread.sleep(3000);
+	}
+	/////////////////Datetime for Event/////////////////
 	public void Datetime() throws InterruptedException  , NumberFormatException {
  driver.findElement(By.name("em_start_date")).click();
  Thread.sleep(7000);
  ((JavascriptExecutor)driver).executeScript("document.querySelector('.YB_startdate').removeAttribute('readonly',0);");
  WebElement fromDateBox= driver.findElement(By.cssSelector(".YB_startdate"));
- fromDateBox.sendKeys("2018/12/21"); 
+ fromDateBox.sendKeys("2019/01/05"); 
 		  
    driver.findElement(By.name("em_end_date")).click();
    Thread.sleep(8000);
    ((JavascriptExecutor)driver).executeScript("document.querySelector('.YB_enddate').removeAttribute('readonly',0);");
    WebElement fromDateBox2= driver.findElement(By.cssSelector(".YB_enddate"));
-   fromDateBox2.sendKeys("2018/12/30");
+   fromDateBox2.sendKeys("2019/01/25");
    driver.findElement(By.name("em_end_date")).click();
 		 
     driver.findElement(By.name("em_start_time")).click();
@@ -183,7 +244,7 @@ this.driver =idriver;
 	js3.executeScript("document.querySelector('.YB_endtime').value='08:30 PM'");
 	Thread.sleep(8000);
 	}
-
+//////////////datetime for event/////////////////////////////////////
 	public void Datetime2() throws InterruptedException   {
 		driver.findElement(By.name("em_start_date")).click();
 		 Thread.sleep(7000);
@@ -247,6 +308,7 @@ this.driver =idriver;
 			Thread.sleep(8000);
 		
 	}
+		/////////////For Selecting Region in add event//////////////
 	public void selectregion() throws InterruptedException {
 		Select select=new Select(slrg);
 		select.selectByIndex(1);
@@ -258,6 +320,7 @@ this.driver =idriver;
 		findlc.click();
 		Thread.sleep(3000);
 	}
+/////////////For Selecting Region in add event//////////////
 	public void selectregion1(String address) throws InterruptedException {
 		Select select=new Select(slrg);
 		select.selectByIndex(3);
@@ -269,11 +332,9 @@ this.driver =idriver;
 		findlc.click();
 		Thread.sleep(3000);
 	}
+/////////////Contact name,email,number for add event//////////////
 	public void Event2(String contact,String email,String name) throws InterruptedException {
-	    
-		
-		
-		conem.sendKeys(contact);
+	    conem.sendKeys(contact);
 		conemail.sendKeys(email);
 		connam.sendKeys(name);
 		clk1.click();
@@ -289,9 +350,22 @@ this.driver =idriver;
 		
 		
 	}
-	public void youthevent2() throws InterruptedException {
+	public void youthevent2(String message) throws InterruptedException {
 		Moredetails.click();
 		Thread.sleep(5000);
+		countin.click();
+		Thread.sleep(2000);
+		photo.click();
+		Thread.sleep(2000);
+		video.click();
+		Thread.sleep(2000);
+		discussion.click();
+		Thread.sleep(2000);
+		sendmessage.sendKeys(message);
+		Thread.sleep(2000);
+		sendbutton.click();
+		Thread.sleep(2000);
+		
 	}
 	public void Sikuli() throws FindFailed, InterruptedException {
 		Alert alert = driver.switchTo().alert();
@@ -637,6 +711,39 @@ public void Event3(String contact,String email,String name) throws InterruptedEx
 	     screen.click(logout);
 	     screen.wait(logout,8000);
 	}
+	public void refresh() throws  AWTException {
+		Robot robot = new Robot();
+		// press key Ctrl+Shift+r
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.delay(100);
+		robot.keyPress(KeyEvent.VK_SHIFT);
+		robot.delay(100);
+		robot.keyPress(KeyEvent.VK_R);
+		// relase key Ctrl+Shift+r
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_R);
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_SHIFT);
+		robot.delay(100);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.delay(100);
+		robot.keyPress(KeyEvent.VK_SHIFT);
+		robot.delay(100);
+		robot.keyPress(KeyEvent.VK_R);
+	}
+	
+	public void ylogout() throws FindFailed, InterruptedException {
+		ImagePath.setBundlePath("C:\\Users\\Tradezap\\Desktop\\Sikuli");
+        Screen screen=new Screen();
+		Pattern Profileicon2 =new Pattern("C:\\Users\\Tradezap\\Desktop\\Sikuli\\proicon2.png");
+		Pattern logout2=new Pattern("C:\\Users\\Tradezap\\Desktop\\Sikuli\\logout2.png");
+	     screen.click(Profileicon2);
+	     screen.wait(Profileicon2,5000);
+	     Thread.sleep(8000);
+	     screen.click(logout2);
+	     screen.wait(logout2,8000);
+	}
 	public void Explore1(String tttt)
 {
 		ex.click();
@@ -761,10 +868,11 @@ public void editevent(String edittitle,String editeddes)throws InterruptedExcept
 	
 }
 public void editevent1() throws InterruptedException {
-	//edit.click();
-  //  Thread.sleep(8000);
-   // editoptionclick.click();
-  //  Thread.sleep(8000);
+	eventclick.click();
+	edit.click();
+   Thread.sleep(8000);
+   editoptionclick.click();
+   Thread.sleep(8000);
     ttl.clear();
     des.clear();
     ((JavascriptExecutor)driver).executeScript("scroll(0,1000)");
@@ -772,11 +880,21 @@ public void editevent1() throws InterruptedException {
     Thread.sleep(2000);
    
 }
-public void editevent2(String edittitle1,String editeddes1) throws IOException, InterruptedException {
-	   
-	    ttl.sendKeys(edittitle1);
+public void editevent2(String edittitle ,String edittitle1,String editeddes1) throws IOException, InterruptedException {
+	   ev.click();
+	    Thread.sleep(5000);
+	    title.sendKeys(edittitle);// title search
 	    Thread.sleep(8000);
-	    des.sendKeys(editeddes1);
+	    eventclick.click();//Game event click
+	    Thread.sleep(8000);
+	    edit.click();//edit dropdown option click
+	    Thread.sleep(8000);
+	    editoptionclick.click();//editoption click
+	    Thread.sleep(8000);
+	    ttl.clear();
+	    ttl.sendKeys(edittitle1);//event title
+	    Thread.sleep(8000);
+	    des.sendKeys(editeddes1);//event description
 	    Thread.sleep(8000);
 	    logo.click();
 	    Runtime.getRuntime().exec("D:\\h1.exe");
@@ -790,39 +908,25 @@ public void editevent2_1(String contact,String email,String name) throws Interru
 	conemail.sendKeys(email);
 	connam.clear();
 	connam.sendKeys(name);
-	 updateeditedevent.click();
-	    Thread.sleep(2000);
+	updateeditedevent.click();
+	Thread.sleep(2000);
 }
 public void event_test(String edittitle4) throws InterruptedException {
 	ev.click();
 	Thread.sleep(5000);
 	title.sendKeys(edittitle4);
 	Thread.sleep(8000);
-    String checkToBeSelected ="1";
-    List <WebElement> checklist =driver.findElements(By.name("region_id[]"));
-    Thread.sleep(8000);
-    System.out.println("Number of checkboxes present in webpage is:"+checklist.size());
-    for (int i=0;i<checklist.size();i++)
-    {
-            if(checklist.get(i).getAttribute("value").equalsIgnoreCase(checkToBeSelected)) {
-                    checklist.get(i).click();
-                    }}
-    String checkToBeSelected2= "2";
-    List <WebElement> checklist1 =driver.findElements(By.id("YB_local_city2"));
-    Thread.sleep(8000);
-    System.out.println("Number of checkboxes present in webpage is:"+checklist1.size());
-    for (int i=0;i<checklist1.size();i++)
-    {
-            if(checklist1.get(i).getAttribute("value").equalsIgnoreCase(checkToBeSelected2)) {
-                    checklist1.get(i).click();
-                    }}
-	title.clear();
-	Thread.sleep(5000);
-	regionrefresh.click();
+	allevent.click();
 	Thread.sleep(2000);
-	
-	
-	}
+	title.clear();
+    WebElement ele = driver.findElement(By.xpath("//label[text()='Auckland Region	']"));   ele.click();
+    WebElement ele1 = driver.findElement(By.xpath("//label[text()='Waikato Region	']")); ele1.click(); 
+    Thread.sleep(5000);
+    WebElement ele2 = driver.findElement(By.xpath("//label[text()='Auckland City        ']")); ele2.click();
+    WebElement ele3 = driver.findElement(By.xpath("//label[text()='Hamilton City        ']")); ele3.click();
+    
+
+ }
 public void event_regionfilter() throws InterruptedException ,StaleElementReferenceException {
 	String checkToBeSelected ="1";
 	String checkToBeSelected1 ="3";
@@ -875,12 +979,18 @@ public void event_regionfilter2() throws InterruptedException {
 	
 public void allevent(String titles) throws InterruptedException 
 {
-	allevent.click();
-	Thread.sleep(2000);
+allevent.click();
+Thread.sleep(2000);
 title.sendKeys(titles);	
 Thread.sleep(3000);
 cl.click();
 Thread.sleep(5000);
 
 }
+public void Refresh() {
+	
+	driver.navigate().refresh();driver.navigate().refresh();driver.navigate().refresh();driver.navigate().refresh();	
+	driver.navigate().refresh();driver.navigate().refresh();driver.navigate().refresh();driver.navigate().refresh();
+	driver.navigate().refresh();driver.navigate().refresh();driver.navigate().refresh();driver.navigate().refresh();
+	}
 }

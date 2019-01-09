@@ -5,10 +5,21 @@
     <classes>
       <class name="com.hub.TestNGscript.HubTest">
         <methods>
+          <include name="EditedEventUpdated"/>
+          <include name="Signin2" invocation-numbers="0"/>
+          <include name="endReport"/>
+          <include name="BusinessSignin2" invocation-numbers="0"/>
+          <include name="afterMethod"/>
+          <include name="Myevent"/>
+          <include name="BusinessSignin" invocation-numbers="0"/>
+          <include name="ShadowtechEvent"/>
+          <include name="Signin" invocation-numbers="0"/>
+          <include name="Eventtest"/>
           <include name="beforeMethod"/>
           <include name="Myevent2"/>
-          <include name="endReport"/>
-          <include name="afterMethod"/>
+          <include name="Eventtest2"/>
+          <include name="Eventtest3"/>
+          <include name="Eventtest1"/>
         </methods>
       </class> <!-- com.hub.TestNGscript.HubTest -->
     </classes>

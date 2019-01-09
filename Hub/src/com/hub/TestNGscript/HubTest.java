@@ -5,7 +5,7 @@ import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
 
 import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
-import com.hub.PageFactory.Hubcodes;
+import com.hub.PageFactory.Hubcode;
 import com.hub.TestDataEngine.Testexcel;
 import com.hub.Utilities.Browsercodings;
 import com.hub.Utilities.Constant;
@@ -47,6 +47,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.sikuli.script.FindFailed;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -60,19 +61,19 @@ public class HubTest {
 
     public static WebDriver driver;
     
-  @Test(priority=0,dataProvider="Test")
+  @Test(priority=0,dataProvider="getData2")
   public void Signin(String user,String pass) throws IOException, InterruptedException, ParseException {
-	  report=new ExtentReports("D:\\Reports\\event.html",true);
+	  report=new ExtentReports("D:\\Reports\\ResultReport.html",true);
 	  logger=report.startTest("BusinessVerifyLogin");
-	  Hubcodes obj = PageFactory.initElements(driver, Hubcodes.class);
+	  Hubcode obj = PageFactory.initElements(driver, Hubcode.class);
 	  obj.login(user, pass);
 	  logger.log(LogStatus.INFO, "Logins the application successfully");
 	  
   }
-	 @Test(priority=1,enabled=false)
+	 @Test(priority=1)
 	 public void Eventtest() throws InterruptedException, IOException {
 	logger=report.startTest("VerifyEventModule without Entering Address Fields");
-	Hubcodes objs = PageFactory.initElements(driver, Hubcodes.class);
+	Hubcode objs = PageFactory.initElements(driver, Hubcode.class);
 	 objs.Events(Constant.EventTitle,Constant.Description);
 	 objs.Datetime();
 	 Thread.sleep(5000);
@@ -98,10 +99,10 @@ public class HubTest {
       logger.log(LogStatus.INFO, "Address Field is Required For create Event");
 	 
    	}
-@Test(priority=2,enabled=false)
+@Test(priority=2)
 public void Eventtest1() throws IOException, InterruptedException {
 	 logger=report.startTest("Checking all the Possibilites of CreateEvent Field");
-	  Hubcodes obj1 = PageFactory.initElements(driver, Hubcodes.class);
+	  Hubcode obj1 = PageFactory.initElements(driver, Hubcode.class);
 	  obj1.Eventdes(Constant.EventTitle, Constant.Description);
 	  logger.log(LogStatus.INFO, "Entering Only the Title and Description and Click Submit"); 
       obj1.Event31("AnotherEvent", Constant.Description);
@@ -127,10 +128,10 @@ public void Eventtest1() throws IOException, InterruptedException {
       logger.log(LogStatus.INFO, "Create Event checked with Different scenarios with submit");     
 }
   
-  @Test(priority=3,enabled=false)
+@Test(priority=3)
   public void Eventtest2() throws InterruptedException {
 	  logger=report.startTest("VerifyEventModule Only Enters Title and submit");
-	  Hubcodes obj2 = PageFactory.initElements(driver, Hubcodes.class);
+	  Hubcode obj2 = PageFactory.initElements(driver, Hubcode.class);
 	  obj2.Eventtitle("Eventday");
 	  String title1 = driver.getTitle();
       System.out.println(title1);
@@ -143,10 +144,10 @@ public void Eventtest1() throws IOException, InterruptedException {
       ((JavascriptExecutor)driver).executeScript("scroll(0,2000)");
       logger.log(LogStatus.INFO, "Fields are missing for create event");
   }
-  @Test(priority=4,enabled=false)
+  @Test(priority=4)
   public void Eventtest3() throws InterruptedException, IOException, FindFailed {
 	  logger=report.startTest("Event submitted with All Fields");
-	  Hubcodes obj2 = PageFactory.initElements(driver, Hubcodes.class);
+	  Hubcode obj2 = PageFactory.initElements(driver, Hubcode.class);
 	  obj2.Events("GameEvent!!!", Constant.Description);
 	  obj2.Datetime();
 	  Thread.sleep(7000);
@@ -156,21 +157,21 @@ public void Eventtest1() throws IOException, InterruptedException {
       String title1 = driver.getTitle();
       System.out.println(title1);
       Thread.sleep(2000);
-      String actual_error1=driver.findElement(By.xpath("//li//a[contains(text(),'My Event')]")).getText();
-	  String expected_error1="My Event";
+      String actual_error1=driver.findElement(By.xpath("//a[text()='GameEvent!!!']")).getText();
+	  String expected_error1="GameEvent!!!";
       Assert.assertEquals(actual_error1, expected_error1);
-      Assert.assertTrue(actual_error1.contains("My Event"));
+      Assert.assertTrue(actual_error1.contains("GameEvent!!!"));
       System.out.println("Event created successfully");
   //    ((JavascriptExecutor)driver).executeScript("scroll(0,2000)");
       logger.log(LogStatus.INFO, "Event Created Successfully");
-    //  obj2.logout();
+      obj2.logout();
       logger.log(LogStatus.INFO, "Logouts the BusinessLogin");////p[contains(text(),'GoodEvent')]
   }
-  @Test(priority=5,dataProvider="getData",enabled=false)
+   @Test(priority=5,dataProvider="getData")
   public void Signin2(String user,String pass) throws IOException, InterruptedException, ParseException, FindFailed {
 	
 	   logger=report.startTest("VerifyLogin for YouthLogin");
-	   Hubcodes obj3 = PageFactory.initElements(driver, Hubcodes.class);
+	   Hubcode obj3 = PageFactory.initElements(driver, Hubcode.class);
 	   obj3.login2(user, pass);
 	   logger.log(LogStatus.INFO, "Logins the application as Youth Successfully");
 	   obj3.youthevent();
@@ -179,77 +180,102 @@ public void Eventtest1() throws IOException, InterruptedException {
 	   Assert.assertEquals(actual_error1, expected_error1);
 	   Assert.assertTrue(actual_error1.contains("GameEvent!!!"));
 	   Thread.sleep(8000);
-	   obj3.youthevent2();
+	   obj3.youthevent2("I'm Intrested");
 	   String title2 = driver.getTitle();
 	   System.out.println(title2);
       logger.log(LogStatus.INFO, "Successfully Youth Can view the Events Posted By Business");
+      
    
-        
-   
+        }
+   @Test(priority=6,dataProvider="getData2")
+  public void BusinessSignin(String user,String pass) throws IOException, InterruptedException, ParseException, FindFailed {
+	  logger=report.startTest("BusinessVerifyLogin");
+	  Hubcode obj = PageFactory.initElements(driver, Hubcode.class);
+	  obj.ylogout();
+	  logger.log(LogStatus.INFO, "Logouts the Youthprofile");
+	  obj.login2(user, pass);
+	  logger.log(LogStatus.INFO, "Logins the application successfully");
+	  
   }
-@Test (priority=6,enabled=false)
+ 
+@Test (priority=7)
 public void Myevent() throws InterruptedException, IOException, FindFailed, AWTException {
 	 logger=report.startTest("Checks the Event title Filter on MyEvent Page");
-	  Hubcodes obj4 = PageFactory.initElements(driver, Hubcodes.class);
-	 obj4.myevent("Eventnowadays", "356555555", "!@#$%^&*()_+","ASssddf2323.343","GameEvent!!!");
+	  Hubcode obj4 = PageFactory.initElements(driver, Hubcode.class);
+	  obj4.myevent("Eventnowadays", "356555555", "!@#$%^&*()_+","ASssddf2323.343","GameEvent!!!");
 	 logger.log(LogStatus.INFO, "Successfully Tests the Title search Field");
-	 driver.navigate().to("http://demo1.youthhub.com/event/edit/1275170");
-    obj4.editevent("GameEvent!!!",Constant.Edited);
+	 driver.navigate().to("http://demo1.youthhub.com/event/edit/3607163");
+     obj4.editevent("GameEvent!!!",Constant.Edited);
      logger.log(LogStatus.INFO, "Successfully Event edited and Updates the Event");
-     driver.navigate().to("http://demo1.youthhub.com/event/edit/1275170");
      obj4.editevent1();
      logger.log(LogStatus.INFO, "Event updated without Entering event title and description");
 	  String actual_error1=driver.findElement(By.xpath("//span[contains(text(),'This field is required.')]")).getText();
 	  String expected_error1="";
       Assert.assertEquals(actual_error1, expected_error1);
       Assert.assertTrue(actual_error1.contains("This field is required."));
+	 
       
 }
-@Test(priority=7,enabled=false)
+@Test(priority=8)
 public void EditedEventUpdated() throws IOException, InterruptedException {
 logger=report.startTest("Checks the Event title Filter on MyEvent Page");
-Hubcodes obj5 = PageFactory.initElements(driver, Hubcodes.class);
-       obj5.editevent2("GameEvent!!!", Constant.Edited);
-      obj5.Date3();
+Hubcode obj5 = PageFactory.initElements(driver, Hubcode.class);
+       obj5.editevent2("GameEvent!!!","GameEvent!!!", Constant.Edited);
+      //obj5.Date3();
      // obj5.Date4();
       obj5.selectregion1("Christchurch,Newzealand");
       obj5.editevent2_1("8682942036", "Gudduganesh@gmail.com", "Franklin");
       logger.log(LogStatus.INFO, "Event Edited and Updated Successfully");
-     String actual_error2=driver.findElement(By.xpath("p[contains(text(),'GameEvent!!!')]")).getText();
+     String actual_error2=driver.findElement(By.xpath("//p[contains(text(),'GameEvent!!!')]")).getText();
 	 String expected_error2="GameEvent!!!";
      Assert.assertEquals(actual_error2, expected_error2);
      Assert.assertTrue(actual_error2.contains("GameEvent!!!"));
 }
 	  
-@Test(priority=8)
-public void Myevent2() throws InterruptedException ,StaleElementReferenceException {
-	 logger=report.startTest("Checks the Event title Filter and Region/city  checkbox on MyEvent Page");
-	  Hubcodes obj6 = PageFactory.initElements(driver, Hubcodes.class);
+@Test(priority=9)
+public void Myevent2() throws InterruptedException ,StaleElementReferenceException, FindFailed {
+	  logger=report.startTest("Checks the Event title Filter and Region/city  checkbox on MyEvent Page");
+	  Hubcode obj6 = PageFactory.initElements(driver, Hubcode.class);
 	  obj6.event_test("testing3");
 	  logger.log(LogStatus.INFO, "All the Filters and Region checkboxes are Tested successfully");
-	  obj6.event_regionfilter();
-	//  obj6.event_cityfilter();
+	  ((JavascriptExecutor)driver).executeScript("scroll(0,1000)");
 	  logger.log(LogStatus.INFO, "All the Region/city checkboxes are Tested successfully");
-	obj6.allevent("Conversations in Confidence Course Dec 2018.");
-	logger.log(LogStatus.INFO, "Switches page from Myevents to AllEventlist page sucessfully");
-	
+	  obj6.allevent("Conversations in Confidence Course Dec 2018.");
+	  logger.log(LogStatus.INFO, "Switches page from Myevents to AllEventlist page sucessfully");
+	  obj6.logout();
+	  Thread.sleep(5000);
 	     }
+@Test(priority=10,dataProvider="Shadowtechlogin"                                                                    )
+public void BusinessSignin2(String user,String pass) throws IOException, InterruptedException, ParseException, FindFailed {
+	  logger=report.startTest("Shadowtech Event");
+	  Hubcode obj = PageFactory.initElements(driver, Hubcode.class);
+	  obj.login2(user, pass);
+	  logger.log(LogStatus.INFO, "Logins the application as ShadowtechAdmin successfully");
+	  
+}
 	 
+@Test(priority=11)
+public void ShadowtechEvent() throws IOException, InterruptedException, FindFailed, AWTException {
+	  logger=report.startTest("Event submitted with All Fields");
+	  Hubcode obj2 = PageFactory.initElements(driver, Hubcode.class);
+	  obj2.ShadowEvents("ShadowEventnowtest", Constant.Description);
+	  obj2.Datetime();
+	  Thread.sleep(7000);
+	  obj2.selectregion1("Newzealand");
+	  obj2.Event3("123456789", "dddd@gmail.com", "Foyals");
+	  Thread.sleep(5000);
+	  obj2.refresh();
+      String title1 = driver.getTitle();
+      System.out.println(title1);
+      Thread.sleep(2000);
+      //    ((JavascriptExecutor)driver).executeScript("scroll(0,2000)");
+      logger.log(LogStatus.INFO, "Event Created Successfully");
+}
 
-  @Test(priority=9,enabled=false)
-  public void ExploreTest() throws InterruptedException, FindFailed {
-	  logger=report.startTest("VerifyExploreModule");
-	  Hubcodes obj2 = PageFactory.initElements(driver, Hubcodes.class);
-	  obj2.Explore2("Toi","!~!@#$%^&*()_+","123.22.555.");
-	  obj2.expl();
-	
-
-  }
- 
 	 
 
   @BeforeClass
-  public static void beforeMethod() {
+  public static void beforeMethod() throws InterruptedException {
 	  driver = Browsercodings.Browserfact("chrome", "http://demo1.youthhub.com/");
   }
 
@@ -276,8 +302,8 @@ public void Myevent2() throws InterruptedException ,StaleElementReferenceExcepti
 	  
   @DataProvider
   public Object[][] Test() {
-	  Testexcel RR = new Testexcel("D:\\GaneshBackup\\Eclipse workspace\\Hub\\src\\com\\hub\\TestData\\Login Data.xlsx");
-	//  Testexcel RR= new Testexcel("D:\\GaneshBackup\\Eclipse workspace\\Hub\\src\\com\\hub\\TestData\\Youthlogin.xlsx");
+	 Testexcel RR = new Testexcel("D:\\GaneshBackup\\Eclipse workspace\\Hub\\src\\com\\hub\\TestData\\Login Data.xlsx");
+	// Testexcel RR= new Testexcel("D:\\GaneshBackup\\Eclipse workspace\\Hub\\src\\com\\hub\\TestData\\Youthlogin.xlsx");
   	   int rows = RR.getrowgount(0);
   	   Object [][] data = new Object [rows][2];
   	   for(int i=0;i<rows;i++)
@@ -304,5 +330,35 @@ public void Myevent2() throws InterruptedException ,StaleElementReferenceExcepti
 	
 	return data;
 	}
+  @DataProvider
+ public Object[][] Shadowtechlogin()
+	{
+	//Rows - Number of times your test has to be repeated.
+	//Columns - Number of parameters in test data.
+	Object[][] data = new Object[1][2];
+
+	// 1st row
+	data[0][0] = Constant.ShadowtechUserName;
+	data[0][1] = Constant.ShadowtechPassword ;
+
+
+	
+	return data;
+	}
+  @DataProvider
+  public Object[][] getData2()
+ 	{
+ 	//Rows - Number of times your test has to be repeated.
+ 	//Columns - Number of parameters in test data.
+ 	Object[][] data = new Object[1][2];
+
+ 	// 1st row
+ 	data[0][0] = Constant.UserName1;
+ 	data[0][1] = Constant.Password;
+
+
+ 	
+ 	return data;
+ 	}
 }
 

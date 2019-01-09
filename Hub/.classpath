@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="D:/JARs/java-json.jar"/>
 	<classpathentry kind="lib" path="D:/JARs/selenium-chrome-driver-2.26.0.jar"/>
 	<classpathentry kind="lib" path="D:/JARs/selenium-server-standalone-2.41.0.jar"/>
@@ -22,7 +27,11 @@
 	<classpathentry kind="lib" path="D:/JARs/JARS/poi-scratchpad-3.17.jar"/>
 	<classpathentry kind="lib" path="D:/JARs/JARS/selenium-chrome-driver-2.26.0.jar"/>
 	<classpathentry kind="lib" path="D:/JARs/JARS/xmlbeans-2.6.0.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_191"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="D:/GaneshBackup/Sikuli jars/sikuli-3.0.0.jar"/>
 	<classpathentry kind="lib" path="D:/GaneshBackup/Sikuli jars/sikuli-script.jar"/>
 	<classpathentry kind="lib" path="D:/GaneshBackup/Sikuli jars/sikulixapi-1.1.0.jar"/>
@@ -43,5 +52,10 @@
 	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/selenium-api-3.4.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/selenium-firefox-driver-3.4.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tradezap/Downloads/Firefox jars/selenium-remote-driver-3.4.0.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
